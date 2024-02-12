@@ -21,4 +21,5 @@
     <string name="register">Register</string>
     <string name="welcome">Welcome $userName to the new Co-op Bank app!</string>
     <string name="wellcome_to_coop">Welcome to Co-op Bank</string>
+    <string name="log_out">Logout</string>
 </resources>

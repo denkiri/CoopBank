@@ -21,6 +21,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.example.coopbank.ui.theme.AppTheme
 import com.example.coopbank.ui.theme.CoopBankTheme
+import com.example.coopbank.ui.theme.green
 
 @Composable
 fun NormalButton(
@@ -36,7 +37,7 @@ fun NormalButton(
             onClick = onClick,
             modifier = Modifier.fillMaxWidth(),
             colors = ButtonDefaults.buttonColors(
-                Color.Green
+                green
             )
         ) {
             Text(

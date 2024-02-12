@@ -15,7 +15,6 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
-import com.example.coopbank.ui.components.ErrorTextInputField
 import com.example.coopbank.R
 /**
  * Password Text Field
@@ -93,7 +92,7 @@ fun PasswordTextField(
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun EmailTextField(
+fun UsernameTextField(
     modifier: Modifier = Modifier,
     value: String,
     onValueChange: (String) -> Unit,
@@ -128,36 +127,3 @@ fun EmailTextField(
 /**
  * Mobile Number Text Field
  */
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun MobileNumberTextField(
-    modifier: Modifier = Modifier,
-    value: String,
-    onValueChange: (String) -> Unit,
-    label: String,
-    isError: Boolean = false,
-    errorText: String = "",
-    imeAction: ImeAction = ImeAction.Next
-) {
-
-    OutlinedTextField(
-        modifier = modifier,
-        value = value,
-        onValueChange = onValueChange,
-        label = {
-            Text(text = label)
-        },
-        maxLines = 1,
-        keyboardOptions = KeyboardOptions(
-            keyboardType = KeyboardType.Phone,
-            imeAction = imeAction
-        ),
-        isError = isError,
-        supportingText = {
-            if (isError) {
-                ErrorTextInputField(text = errorText)
-            }
-        }
-    )
-
-}

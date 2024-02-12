@@ -34,8 +34,11 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.example.coopbank.R
@@ -43,6 +46,7 @@ import com.example.coopbank.ui.components.MediumTitleText
 import com.example.coopbank.ui.components.NormalButton
 import com.example.coopbank.ui.components.TitleText
 import com.example.coopbank.ui.theme.AppTheme
+import com.example.coopbank.ui.theme.green
 import com.example.loginapp.screens.login.state.LoginUiEvent
 @Composable
 fun LoginScreen(navController: NavHostController, viewModel: LoginViewModel = hiltViewModel()) {
@@ -92,7 +96,14 @@ fun LoginScreen(navController: NavHostController, viewModel: LoginViewModel = hi
                                     .build(),
                                 contentDescription = stringResource(id = R.string.login_heading_text)
                             )
-
+                            Text(
+                               modifier= Modifier.align(Alignment.CenterHorizontally),
+                                text = stringResource(id = R.string.wellcome_to_coop),
+                                fontSize = 24.sp,
+                                fontWeight = FontWeight.Normal,
+                                color= green,
+                                textAlign = TextAlign.Center
+                            )
                             LoginInputs(
                                 loginState = loginState,
                                 onEmailChange = { inputString ->

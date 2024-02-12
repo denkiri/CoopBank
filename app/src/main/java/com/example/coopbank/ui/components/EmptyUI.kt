@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 fun EmptyUI(
     loading: Boolean = false,
     hideMessage: Boolean = false,
-    message: String = "No Leave to show."
+    message: String = "error loading data"
 ) {
     Box(
         modifier = Modifier.fillMaxSize(),

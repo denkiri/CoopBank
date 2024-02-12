@@ -4,8 +4,12 @@ import androidx.room.PrimaryKey
 @Entity
 data class Profile(
     @PrimaryKey(autoGenerate = false)
-    val member_id: Int,
-    val date_created: String,
     val email: String,
-    val token: String
+    val firstName: String,
+    val gender: String,
+    val id: Int,
+    val image: String,
+    val lastName: String,
+    val token: String,
+    val username: String
 )

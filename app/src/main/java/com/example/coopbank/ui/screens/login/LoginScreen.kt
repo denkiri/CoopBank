@@ -1,17 +1,9 @@
 package com.example.coopbank.ui.screens.login
-import android.content.Context
 import android.util.Log
-import android.widget.Toast
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import coil.compose.AsyncImage
-import coil.request.ImageRequest
-import coil.size.Scale
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -20,38 +12,66 @@ import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.ElevatedCard
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import coil.compose.AsyncImage
+import coil.request.ImageRequest
+import coil.size.Scale
 import com.example.coopbank.R
-import com.example.coopbank.ui.components.MediumTitleText
+import com.example.coopbank.data.Resource
 import com.example.coopbank.ui.components.NormalButton
-import com.example.coopbank.ui.components.TitleText
+import com.example.coopbank.ui.components.Toast
 import com.example.coopbank.ui.theme.AppTheme
 import com.example.coopbank.ui.theme.green
-import com.example.loginapp.screens.login.state.LoginUiEvent
+import com.example.coopbank.ui.screens.login.state.LoginUiEvent
+
 @Composable
 fun LoginScreen(navController: NavHostController, viewModel: LoginViewModel = hiltViewModel()) {
     val loginState by remember {
         viewModel.loginState
+    }
+    val authState by viewModel.loginRequestResult.collectAsState()
+    LaunchedEffect(authState) {
+        if (authState is Resource.Success && authState.data != null) {
+            viewModel.saveProfile(authState.data!!)
+            navController.navigate("home_screen")
+            viewModel.resetStates()
+            Log.d("loginDataResponse", "ProfileData: ${authState.data}")
+        }
+    }
+    when (authState) {
+        is Resource.Idle -> {
+        }
+        is Resource.Loading -> {
+            LinearProgressIndicator()
+        }
+        is Resource.Success -> {
+            if (authState.data != null) {
+                Toast(message = "Login Successful")
+            }
+        }
+        is Resource.Error -> {
+            Toast(message = authState.data.toString())
+            Log.d("loginDataResponse", "errorMessage: ${authState.message.toString()}")
+        }
     }
 
     Box(modifier = Modifier.fillMaxSize()) {
@@ -127,7 +147,9 @@ fun LoginScreen(navController: NavHostController, viewModel: LoginViewModel = hi
                                 onClick = {
                                     viewModel.onUiEvent(loginUiEvent = LoginUiEvent.Submit)
                                     if (loginState.isLoginSuccessful) {
-                                        navController.navigate("home_screen")
+                                        viewModel.performLogin(viewModel.loginState.value.username.trim(),
+                                            viewModel.loginState.value.password.trim())
+
                                     }
                                 }
                             )

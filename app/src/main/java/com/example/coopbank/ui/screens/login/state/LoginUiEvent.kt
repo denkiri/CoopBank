@@ -1,4 +1,4 @@
-package com.example.loginapp.screens.login.state
+package com.example.coopbank.ui.screens.login.state
 /**
  * Login Screen Events
  */

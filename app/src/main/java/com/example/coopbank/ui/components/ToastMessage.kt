@@ -8,8 +8,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLifecycleOwner
-//import com.example.coopbank.ui.screens.login.showToast
 import kotlinx.coroutines.delay
+
 @Composable
 fun Toast(message: String, durationMillis: Int = 2000) {
     LocalContext.current

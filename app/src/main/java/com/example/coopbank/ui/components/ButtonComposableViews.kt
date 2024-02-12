@@ -43,7 +43,7 @@ fun NormalButton(
             Text(
                 text = text,
                 style = MaterialTheme.typography.titleMedium,
-                color = Color.White // Set your desired text color here
+                color = Color.White
             )
         }
     }

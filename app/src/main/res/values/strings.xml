@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">CoopBank</string>
+    <string name="app_logo">Welcome to Co-op Bank</string>
+    <string name="empty_string" />
+    <!--Login-->
+    <string name="login_heading_text">Use your credentials to login</string>
+    <string name="login_email_id">Username</string>
+    <string name="login_password_label">Password</string>
+    <string name="login_button_text">Login</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="icon_password_visible">Password Visible</string>
+    <string name="icon_password_hidden">Password Hidden</string>
+
+    <!--Login Error Messages-->
+    <string name="login_error_msg_empty_email">Please enter your email</string>
+    <string name="login_error_msg_empty_password">Please enter your password</string>
+    <string name="login_error_user_not_found">User not found </string>
+    <string name="navigate_back">Navigate to the previous screen</string>
+    <!--Login Page - Register Section-->
+    <string name="do_not_have_account">Don\'t have an account?</string>
+    <string name="register">Register</string>
+    <string name="welcome">Welcome $userName to the new Co-op Bank app!</string>
+    <string name="wellcome_to_coop">Welcome to Co-op Bank</string>
+</resources>

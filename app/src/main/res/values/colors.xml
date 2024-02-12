@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="green_coop">#80BA27</color>
+    <color name="white_coop">#FFFFFF</color>
+    <color name="green_dark_coop">#80BA27</color>
+    <color name="brown_coop">#F0F0F0</color>
+    <color name="gray_coop">#E8E8E8</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>

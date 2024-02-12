@@ -29,7 +29,7 @@ fun LoginInputs(
     // Login Inputs Section
     Column(modifier = Modifier.fillMaxSize() .padding(top = 128.dp),verticalArrangement = Arrangement.Center,) {
         Text(
-            fontSize = 22.sp,
+            fontSize = 16.sp,
             fontWeight = FontWeight.Normal,
             text = stringResource(id = R.string.login_heading_text),
             color= Color.White

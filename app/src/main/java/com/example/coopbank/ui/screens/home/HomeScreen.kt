@@ -26,6 +26,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
@@ -60,7 +61,9 @@ fun HomeScreen(navController: NavHostController, viewModel: LoginViewModel = hil
                     modifier = Modifier.fillMaxWidth(),
                     contentAlignment = Alignment.TopEnd // Aligning content (AsyncImage) to the end (right) of the Box
                 ) {
-                    Row {
+                    Row(
+                        modifier = Modifier.padding(top = 29.dp) // Adding padding of 14.dp to the top of the Row
+                    ) {
                         AsyncImage(
                             modifier = Modifier
                                 .height(20.dp)
@@ -75,7 +78,8 @@ fun HomeScreen(navController: NavHostController, viewModel: LoginViewModel = hil
                         Spacer(modifier = Modifier.width(14.dp)) // Adding a spacer to create padding
                         Text(
                             text = stringResource(id = R.string.log_out),
-                            color = Color.White
+                            color = Color.White,
+                            modifier = Modifier.padding(end = 26.dp)
                         )
                     }
                 }
@@ -102,7 +106,9 @@ fun HomeScreen(navController: NavHostController, viewModel: LoginViewModel = hil
                     Text(
 
                         text = stringResource(id = R.string.welcome),
-                        color= Color.White
+                        color= Color.White,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.fillMaxWidth()
                     )}}
     }
 

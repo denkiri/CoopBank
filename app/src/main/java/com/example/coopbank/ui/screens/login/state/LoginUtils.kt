@@ -3,7 +3,7 @@ import com.example.coopbank.R
 import com.example.coopbank.ui.components.ErrorState
 val emailEmptyErrorState = ErrorState(
     hasError = true,
-    errorMessageStringResource = R.string.login_error_msg_empty_email
+    errorMessageStringResource = R.string.login_error_msg_empty_username
 )
 
 val passwordEmptyErrorState = ErrorState(

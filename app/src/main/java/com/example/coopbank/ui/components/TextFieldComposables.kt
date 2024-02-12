@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -83,7 +84,12 @@ fun PasswordTextField(
             if (isError) {
                 ErrorTextInputField(text = errorText)
             }
-        }
+        },
+        colors = TextFieldDefaults.outlinedTextFieldColors(
+            textColor, // Set the text color here
+            focusedBorderColor = textColor,
+            unfocusedBorderColor = textColor
+        )
     )
 }
 
@@ -99,19 +105,17 @@ fun UsernameTextField(
     label: String,
     isError: Boolean = false,
     errorText: String = "",
-    textColor: Color = Color.White,
+    textColor: Color = Color.White, // Default text color is set here
     imeAction: ImeAction = ImeAction.Next
-
 ) {
-
     OutlinedTextField(
         modifier = modifier,
         value = value,
         onValueChange = onValueChange,
-        label = { Text(text = label, color = textColor) },
+        label = { Text(text = label, style = TextStyle(color = textColor)) }, // Set text color here
         maxLines = 1,
         keyboardOptions = KeyboardOptions(
-            keyboardType = KeyboardType.Email,
+            keyboardType = KeyboardType.Text,
             imeAction = imeAction
         ),
         isError = isError,
@@ -119,11 +123,14 @@ fun UsernameTextField(
             if (isError) {
                 ErrorTextInputField(text = errorText)
             }
-        }
+        },
+        colors = TextFieldDefaults.outlinedTextFieldColors(
+             textColor, // Set the text color here
+            focusedBorderColor = textColor,
+            unfocusedBorderColor = textColor
+        )
     )
-
 }
 
-/**
- * Mobile Number Text Field
- */
+
+

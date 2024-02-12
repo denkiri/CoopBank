@@ -30,9 +30,9 @@ class LoginViewModel @Inject constructor(private val repository: LoginRepository
             // Email/Mobile changed
             is LoginUiEvent.EmailChanged -> {
                 loginState.value = loginState.value.copy(
-                    email = loginUiEvent.inputValue,
+                    username = loginUiEvent.inputValue,
                     errorState = loginState.value.errorState.copy(
-                        emailErrorState = if (loginUiEvent.inputValue.trim().isNotEmpty())
+                        usernameErrorState = if (loginUiEvent.inputValue.trim().isNotEmpty())
                             ErrorState()
                         else
                             emailEmptyErrorState
@@ -74,7 +74,7 @@ class LoginViewModel @Inject constructor(private val repository: LoginRepository
      * @return false -> inputs are invalid
      */
     private fun validateInputs(): Boolean {
-        val emailOrMobileString = loginState.value.email.trim()
+        val emailOrMobileString = loginState.value.username.trim()
         val passwordString = loginState.value.password
         return when {
 
@@ -82,7 +82,7 @@ class LoginViewModel @Inject constructor(private val repository: LoginRepository
             emailOrMobileString.isEmpty() -> {
                 loginState.value = loginState.value.copy(
                     errorState = LoginErrorState(
-                        emailErrorState = emailEmptyErrorState
+                        usernameErrorState = emailEmptyErrorState
                     )
                 )
                 false
@@ -100,7 +100,7 @@ class LoginViewModel @Inject constructor(private val repository: LoginRepository
             // No errors
             else -> {
                 // Set default error state
-                loginState.value = loginState.value.copy(email = emailOrMobileString)
+                loginState.value = loginState.value.copy(username = emailOrMobileString)
 
                 loginState.value = loginState.value.copy(errorState = LoginErrorState())
                 true

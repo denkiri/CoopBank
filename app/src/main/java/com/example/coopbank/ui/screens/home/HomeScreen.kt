@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -37,10 +38,6 @@ import com.example.coopbank.ui.theme.AppTheme
 
 @Composable
 fun HomeScreen(navController: NavHostController, viewModel: LoginViewModel = hiltViewModel()) {
-    val loginState by remember {
-        viewModel.loginState
-
-    }
     Box(modifier = Modifier.fillMaxSize()) {
         Surface(modifier = Modifier.fillMaxSize()) {
 
@@ -63,24 +60,26 @@ fun HomeScreen(navController: NavHostController, viewModel: LoginViewModel = hil
                     modifier = Modifier.fillMaxWidth(),
                     contentAlignment = Alignment.TopEnd // Aligning content (AsyncImage) to the end (right) of the Box
                 ) {
-                    Row{
-                    AsyncImage(
-                        modifier = Modifier
-                            .height(20.dp).width(20.dp),
-                        model = ImageRequest.Builder(LocalContext.current)
-                            .data(data = R.drawable.logout)
-                            .crossfade(enable = true)
-                            .scale(Scale.FILL)
-                            .build(),
-                        contentDescription = stringResource(id = R.string.login_heading_text)
-                    )
+                    Row {
+                        AsyncImage(
+                            modifier = Modifier
+                                .height(20.dp)
+                                .width(20.dp),
+                            model = ImageRequest.Builder(LocalContext.current)
+                                .data(data = R.drawable.logout)
+                                .crossfade(enable = true)
+                                .scale(Scale.FILL)
+                                .build(),
+                            contentDescription = stringResource(id = R.string.login_heading_text)
+                        )
+                        Spacer(modifier = Modifier.width(14.dp)) // Adding a spacer to create padding
                         Text(
                             text = stringResource(id = R.string.log_out),
-                            color = Color.White, // Add padding of 16.dp
+                            color = Color.White
                         )
-
                     }
                 }
+
 
                 Column(
                     modifier = Modifier

@@ -7,7 +7,7 @@ import com.example.coopbank.ui.components.ErrorState
  * Login State holding ui input values
  */
 data class LoginState(
-    val email: String = "",
+    val username: String = "",
     val password: String = "",
     val errorState: LoginErrorState = LoginErrorState(),
     val isLoginSuccessful: Boolean = false
@@ -18,7 +18,7 @@ data class LoginState(
  * text field validation errors
  */
 data class LoginErrorState(
-    val emailErrorState: ErrorState = ErrorState(),
+    val usernameErrorState: ErrorState = ErrorState(),
     val passwordErrorState: ErrorState = ErrorState()
 )
 

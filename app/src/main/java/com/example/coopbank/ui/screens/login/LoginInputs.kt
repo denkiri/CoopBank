@@ -39,11 +39,11 @@ fun LoginInputs(
                 .fillMaxWidth()
                 .padding(top = AppTheme.dimens.paddingLarge),
 
-            value = loginState.email,
+            value = loginState.username,
             onValueChange = onEmailChange,
             label = stringResource(id = R.string.login_email_id),
-            isError = loginState.errorState.emailErrorState.hasError,
-            errorText = stringResource(id = loginState.errorState.emailErrorState.errorMessageStringResource)
+            isError = loginState.errorState.usernameErrorState.hasError,
+            errorText = stringResource(id = loginState.errorState.usernameErrorState.errorMessageStringResource)
         )
 
 
@@ -78,11 +78,11 @@ fun RegisterInputs(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = AppTheme.dimens.paddingLarge),
-            value = loginState.email,
+            value = loginState.username,
             onValueChange = onEmailChange,
             label = stringResource(id = R.string.login_email_id),
-            isError = loginState.errorState.emailErrorState.hasError,
-            errorText = stringResource(id = loginState.errorState.emailErrorState.errorMessageStringResource)
+            isError = loginState.errorState.usernameErrorState.hasError,
+            errorText = stringResource(id = loginState.errorState.usernameErrorState.errorMessageStringResource)
         )
 
 

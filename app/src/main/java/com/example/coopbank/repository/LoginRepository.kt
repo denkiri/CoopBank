@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.coopbank.data.Resource
+import com.example.coopbank.models.LoginRequest
 import com.example.coopbank.models.Profile
 import com.example.coopbank.network.AuthApi
 import com.example.coopbank.storage.LoginDatabase
@@ -15,6 +16,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.RequestBody.Companion.toRequestBody
+import retrofit2.await
 import javax.inject.Inject
 
 class LoginRepository @Inject constructor(private val api: AuthApi, db: LoginDatabase, application: Application){
@@ -28,15 +30,8 @@ class LoginRepository @Inject constructor(private val api: AuthApi, db: LoginDat
     suspend fun loginMember(username: String, password: String): Resource<Profile> {
         return try {
             Resource.Loading(data = true)
-            val loginJson = """
-    {
-        "username": "${username}",
-        "password": "${password}"
-    }
-""".trimIndent()
-            val requestBody = loginJson.toRequestBody("application/json".toMediaType())
-
-            val response = api.loginMember(requestBody)
+            val requestBody = LoginRequest(username, password)
+            val response = api.loginMember(requestBody).await() // Wait for the response
             Resource.Loading(data = false)
 
             run {

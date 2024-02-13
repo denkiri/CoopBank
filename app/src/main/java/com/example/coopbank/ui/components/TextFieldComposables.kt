@@ -2,6 +2,8 @@ package com.example.coopbank.ui.components
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Password
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.outlined.Visibility
 import androidx.compose.material.icons.outlined.VisibilityOff
 import androidx.compose.material3.*
@@ -45,6 +47,13 @@ fun PasswordTextField(
         label = {
             Text(text = label,color=textColor)
         },
+        leadingIcon = {
+            Icon(
+                imageVector = Icons.Default.Password,
+                contentDescription = "Password icon",
+                tint = textColor // Set the icon color to match the text color
+            )
+        },
         trailingIcon = {
             IconButton(onClick = {
                 isPasswordVisible = !isPasswordVisible
@@ -57,7 +66,8 @@ fun PasswordTextField(
 
                 val hiddenIconAndText = Pair(
                     first = Icons.Outlined.VisibilityOff,
-                    second = stringResource(id = R.string.icon_password_hidden)
+                    second = stringResource(id = R.string.icon_password_hidden),
+
                 )
 
                 val passwordVisibilityIconAndText =
@@ -66,7 +76,8 @@ fun PasswordTextField(
                 // Render Icon
                 Icon(
                     imageVector = passwordVisibilityIconAndText.first,
-                    contentDescription = passwordVisibilityIconAndText.second
+                    contentDescription = passwordVisibilityIconAndText.second,
+                    tint = Color.White
                 )
             }
         },
@@ -82,13 +93,15 @@ fun PasswordTextField(
         isError = isError,
         supportingText = {
             if (isError) {
-                ErrorTextInputField(text = errorText)
+               // ErrorTextInputField(text = errorText)
             }
         },
         colors = TextFieldDefaults.outlinedTextFieldColors(
             textColor, // Set the text color here
             focusedBorderColor = textColor,
-            unfocusedBorderColor = textColor
+            unfocusedBorderColor = textColor,
+            unfocusedTextColor =textColor,
+            cursorColor =textColor,
         )
     )
 }
@@ -113,6 +126,13 @@ fun UsernameTextField(
         value = value,
         onValueChange = onValueChange,
         label = { Text(text = label, style = TextStyle(color = textColor)) }, // Set text color here
+        leadingIcon = {
+            Icon(
+                imageVector = Icons.Default.Person,
+                contentDescription = "Username icon",
+                tint = textColor // Set the icon color to match the text color
+            )
+        },
         maxLines = 1,
         keyboardOptions = KeyboardOptions(
             keyboardType = KeyboardType.Text,
@@ -125,12 +145,15 @@ fun UsernameTextField(
             }
         },
         colors = TextFieldDefaults.outlinedTextFieldColors(
-             textColor, // Set the text color here
+            textColor,
             focusedBorderColor = textColor,
-            unfocusedBorderColor = textColor
+            unfocusedBorderColor = textColor,
+            unfocusedTextColor = textColor,
+            cursorColor = textColor,
         )
     )
 }
+
 
 
 

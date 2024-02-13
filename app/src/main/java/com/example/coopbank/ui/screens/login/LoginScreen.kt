@@ -1,4 +1,5 @@
 package com.example.coopbank.ui.screens.login
+import android.content.Context
 import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -163,6 +164,8 @@ fun LoginScreen(navController: NavHostController, viewModel: LoginViewModel = hi
         }
     }
 }
-
+fun Context.showToast(message: String) {
+    android.widget.Toast.makeText(this, message, android.widget.Toast.LENGTH_SHORT).show()
+}
 
 

@@ -9,8 +9,6 @@ import javax.inject.Singleton
 
 @Singleton
 interface AuthApi {
-//    @POST("login")
-//    suspend fun loginMember(@Body requestBody: RequestBody): Profile
 @POST("login")
 fun loginMember(@Body loginRequest: LoginRequest): Call<Profile>
 }
